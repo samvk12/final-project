@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
       );
 
       // ✅ Corrected backend URL
-      const response = await fetch(`${BACKEND_URL}/diagnose`, {
+      const response = await fetch('https://ayurveda-backend-41zj.onrender.com/diagnose', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prakriti, symptoms, lifestyle })
