@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const lifestyleInput = document.getElementById('lifestyle');
   const resultBox = document.getElementById('diagnosisResult');
   const resultSection = document.getElementById('diagnosisResultSection');
-  //const aiResultBox = document.getElementById('aiDiagnosis');
-  //const aiContentBox = document.getElementById('aiContent');
   const reportBtn = document.getElementById('viewReportsBtn');
   const reportContainer = document.getElementById('reportHistory');
+
+  const BACKEND_URL = 'https://ayurveda-backend-41zj.onrender.com';
 
   // ✅ Handle prakriti quiz
   if (quizForm && diagnosisDropdown && quizResult) {
@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
         option => option.value
       );
 
-      // Rule-based backend diagnosis
-      const response = await fetch('http://localhost:3000/diagnose', {
+      // ✅ Corrected backend URL
+      const response = await fetch(`${BACKEND_URL}/diagnose`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prakriti, symptoms, lifestyle })
@@ -70,25 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       resultSection.style.display = 'block';
 
-      // ✅ AI-enhanced advice
-      /*let aiData = { aiAdvice: "N/A" };
-      try {
-        const aiResponse = await fetch('http://localhost:3000/ai-diagnose', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prakriti, symptoms, lifestyle })
-        });
-
-        aiData = await aiResponse.json();
-        aiContentBox.innerHTML = aiData.aiAdvice.replace(/\n/g, '<br>');
-        aiResultBox.style.display = 'block';
-      } catch (err) {
-        aiContentBox.innerHTML = `<p><em>AI response could not be loaded.</em></p>`;
-        aiResultBox.style.display = 'block';
-        console.error('AI Fetch Error:', err);
-      }*/
-
-      // ✅ Save to localStorage
+      // ✅ Save report
       const report = {
         prakriti,
         symptoms,
@@ -97,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         foods: data.foods,
         yoga: data.yoga,
         tip: data.tip,
-        //aiAdvice: aiData?.aiAdvice || "N/A",
+        aiAdvice: "N/A", // Set manually since AI is off
         timestamp: new Date().toLocaleString()
       };
 
@@ -135,3 +117,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
