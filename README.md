@@ -90,3 +90,11 @@ node server.js
 ---
 
 ## 🙏 Made with ❤️ for holistic wellness.
+
+## 🖼️ Application Preview
+
+### 🏠 Home Page
+![Home Page](images/home-page.png)
+
+### ✅ Diagnosis Result
+![Diagnosis Page](images/checkout-page.png)
