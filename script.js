@@ -1,4 +1,4 @@
-ddocument.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
   const quizForm = document.getElementById('prakritiQuiz');
   const diagnosisForm = document.getElementById('diagnosisForm');
   const diagnosisDropdown = document.getElementById('prakriti');
